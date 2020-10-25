@@ -7,6 +7,21 @@
 
 static const std::string fileName{"catalogo.txt"};
 
+bool check_file(const std::string &fileName) {
+    std::ifstream file(fileName);
+
+    if (!file){
+        return false;
+    }
+
+    if (file.peek() == EOF){
+        return false;
+    }
+
+    return true;
+
+}
+
 void outputCatalogoToFile(const Catalogo &catalogo) {
     std::ofstream out_file;
     out_file.open(fileName);
@@ -27,18 +42,4 @@ Catalogo inputCatalogoFromFile(Catalogo &catalogo) {
     return catalogo;
 }
 
-bool check_file(const std::string &fileName) {
-    std::ifstream file(fileName);
-
-    if (!file){
-        return false;
-    }
-
-    if (file.peek() == EOF){
-        return false;
-    }
-
-    return true;
-
-}
 

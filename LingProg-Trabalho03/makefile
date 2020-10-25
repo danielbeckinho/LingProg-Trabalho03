@@ -1,17 +1,14 @@
-CC = g++
-CPPFLAGS = -Wall 
+CXX = g++
+CXXFLAGS = -Wall -g
 
-OBJECTS = mainProgram.o structFilme.o catalogo.o persistenciaCatalogo.o 
+mainProgram: mainProgram.o structFilme.o catalogo.o persistenciaCatalogo.o
+	$(CXX) $(CXXFLAGS) -o mainProgram mainProgram.o structFilme.o catalogo.o persistenciaCatalogo.o
 
-PROGRAM = mainProgram
+mainProgram.o: mainProgram.cpp structFilme.o catalogo.o persistenciaCatalogo.o
+	$(CXX) $(CXXFLAGS) -c mainProgram.cpp
 
-all: $(PROGRAM)
+structFilme.o: structFilme.h 
 
-$(PROGRAM): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $@
+catalogo.o: catalogo.h structFilme.h 
 
-.cpp.o: 
-	$(CC) $(CPPFLAGS) -c $<
-
-clean: 
-	rm -vf mainProgram *.o
+persistenciaCatalogo.o: persistenciaCatalogo.h catalogo.h

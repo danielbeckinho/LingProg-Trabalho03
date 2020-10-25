@@ -1,9 +1,9 @@
-#ifndef CATALOGO_H
-#define CATALOGO_H
-
 #include "structFilme.h"
 #include <vector>
 #include <string>
+
+#ifndef CATALOGO_H
+#define CATALOGO_H
 
 class Catalogo {
         friend std::ostream &operator<<(std::ostream &, const Catalogo &);

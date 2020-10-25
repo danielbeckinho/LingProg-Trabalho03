@@ -1,12 +1,12 @@
-#ifndef MAINPROGRAM_H
-#define MAINSPROGRAM_H
-
 #include "structFilme.h"
 #include "catalogo.h"
 
 #include <string>
 #include <vector>
 
+
+#ifndef MAINPROGRAM_H
+#define MAINSPROGRAM_H
 
 void insereFilme(Catalogo &);
 

@@ -24,7 +24,8 @@ int programExit(Catalogo &catalogo) {
 }
 
 void insereFilme(Catalogo &catalogo) {
-    catalogo+=instanciaFilme();
+    Filme filme = instanciaFilme();
+    catalogo+=filme;
 }
 
 void insereVetorFilme(Catalogo &catalogo) {

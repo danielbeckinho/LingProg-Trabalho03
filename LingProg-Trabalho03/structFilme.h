@@ -1,13 +1,11 @@
+#include <string>
+
 #ifndef STRUCTFILME_H
 #define STRUCTFILME_H
 
-#include "catalogo.h"
-
-#include <string>
-
 struct Filme {
 
-    friend Catalogo;
+    friend class Catalogo;
 
     friend std::istream &operator>>(std::istream &, Filme &);
     friend std::ostream &operator<<(std::ostream &, const Filme &);

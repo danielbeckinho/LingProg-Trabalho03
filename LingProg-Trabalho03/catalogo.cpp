@@ -81,8 +81,9 @@ Catalogo Catalogo::operator() (std::string titulo, double nota) {
 std::ostream &operator<<(std::ostream &out, const Catalogo &catalogo) {
     std::cout<< "Exibindo todos os filmes do catalogo: " << std::endl;
     for (auto filme : catalogo.vectorCatalogo) {
-        std::cout<<filme;
+        out<<filme;
     }
+    return out;
 }
 
 Filme Catalogo::filmeNotaMaisAlta() {

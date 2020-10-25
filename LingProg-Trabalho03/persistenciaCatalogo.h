@@ -1,12 +1,13 @@
-#ifndef PERSISTENCIACATALOGO_H
-#define PERSISTENCIACATALOGO_H
-
 #include "catalogo.h"
 
 #include <vector>
 #include <string>
 #include <iostream>
 #include <fstream>
+
+
+#ifndef PERSISTENCIACATALOGO_H
+#define PERSISTENCIACATALOGO_H
 
 void outputCatalogoToFile(const Catalogo &);
 
