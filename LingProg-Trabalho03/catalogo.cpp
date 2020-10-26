@@ -102,3 +102,4 @@ Filme Catalogo::filmeNotaMaisAlta() {
 const int Catalogo::getNumMaxFilmes() {
     return numMaxFilmes;
 }
+

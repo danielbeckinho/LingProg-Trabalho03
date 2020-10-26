@@ -23,12 +23,12 @@ int programExit(Catalogo &catalogo) {
     return 0;
 }
 
-void insereFilme(Catalogo &catalogo) {
+Catalogo insereFilme(Catalogo &catalogo) {
     Filme filme = instanciaFilme();
-    catalogo+=filme;
+    return catalogo+=filme;
 }
 
-void insereVetorFilme(Catalogo &catalogo) {
+Catalogo insereVetorFilme(Catalogo &catalogo) {
     std::vector<Filme> filmes;
     std::cout<< "Quantos filmes gostaria de inserir? ";
     int numFilmes;
@@ -39,7 +39,7 @@ void insereVetorFilme(Catalogo &catalogo) {
         filmes.push_back(instanciaFilme());
     }
 
-    catalogo+=filmes;
+    return catalogo+=filmes;
 }
 
 void buscaFilme(Catalogo &catalogo) {
@@ -51,16 +51,16 @@ void buscaFilme(Catalogo &catalogo) {
     std::cout<< *catalogo(titulo);
 }
 
-void removeFilme(Catalogo &catalogo) {
+Catalogo removeFilme(Catalogo &catalogo) {
     std::string titulo;
     std::cout<< "Titulo do filme para remocao: ";
     std::getline (std::cin,titulo);
     std::cout<< std::endl;
 
-    catalogo-=titulo;
+    return catalogo-=titulo;
 }
 
-void editaFilme(Catalogo &catalogo) {
+Catalogo editaFilme(Catalogo &catalogo) {
     std::cout<< "Titulo do filme a ser editado: ";
     std::string titulo;
     std::getline (std::cin,titulo);
@@ -99,6 +99,7 @@ void editaFilme(Catalogo &catalogo) {
         std::cout<< "Opcao invalida. Tente novamente" << std::endl;
     }
 
+    return catalogo;
 }
 
 void imprimeFilme(Catalogo &catalogo) {

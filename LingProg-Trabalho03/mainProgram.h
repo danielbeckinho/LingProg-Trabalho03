@@ -8,15 +8,15 @@
 #ifndef MAINPROGRAM_H
 #define MAINSPROGRAM_H
 
-void insereFilme(Catalogo &);
+Catalogo insereFilme(Catalogo &);
 
-void insereVetorFilme(Catalogo &);
+Catalogo insereVetorFilme(Catalogo &);
 
 void buscaFilme(Catalogo &);
 
-void removeFilme(Catalogo &);
+Catalogo removeFilme(Catalogo &);
 
-void editaFilme(Catalogo &);
+Catalogo editaFilme(Catalogo &);
 
 void imprimeFilme(Catalogo &);
 
