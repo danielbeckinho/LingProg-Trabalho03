@@ -119,7 +119,7 @@ void buscaFilmeMaiorNota(Catalogo &catalogo) {
 
 int main() {
     Catalogo catalogo;
-    programInit(catalogo);
+    catalogo = programInit(catalogo);
 
     int sel{11};
     while (sel != 0) {
@@ -138,15 +138,15 @@ int main() {
         std::cin>>sel;
         std::cout<<std::endl;
 
-        if (sel == 1) {insereFilme(catalogo);}
+        if (sel == 1) {catalogo = insereFilme(catalogo);}
         
-        else if (sel == 2) {insereVetorFilme(catalogo);}
+        else if (sel == 2) {catalogo = insereVetorFilme(catalogo);}
 
         else if (sel == 3) {buscaFilme(catalogo);}
 
-        else if (sel == 4) {removeFilme(catalogo);}
+        else if (sel == 4) {catalogo = removeFilme(catalogo);}
 
-        else if (sel == 5) {editaFilme(catalogo);} 
+        else if (sel == 5) {catalogo = editaFilme(catalogo);} 
 
         else if (sel == 6) {imprimeFilme(catalogo);}
 
