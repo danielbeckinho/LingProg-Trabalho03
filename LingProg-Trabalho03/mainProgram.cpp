@@ -65,7 +65,7 @@ void editaFilme(Catalogo &catalogo) {
     std::string titulo;
     std::getline (std::cin,titulo);
 
-    std::cout<< "Digite: \n1 - para editar titulo do filme \n2 - para editar o nome da produtora \n3 - para editar a nota do filme";
+    std::cout<< "Digite: \n1 - para editar titulo do filme \n2 - para editar o nome da produtora \n3 - para editar a nota do filme \n Opcao: ";
     int choice;
     std::cin>>choice;
 
