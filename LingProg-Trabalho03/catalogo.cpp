@@ -5,43 +5,35 @@
 #include <algorithm>
 #include <iostream>
 
-// tenho que mudar essa pro busca sobrecarregada 
-bool Catalogo::filmeNoCatalogo(const std::string &titulo) {
-    for (auto filmeCat : vectorCatalogo) {
-        if (filmeCat.titulo == titulo) {return false; }
-    }
-    return true;
-}
-
-Catalogo Catalogo::inserirFilme(Filme &filme) {
+Catalogo& Catalogo::inserirFilme(Filme &filme) {
     if (vectorCatalogo.size() == 0) {vectorCatalogo.push_back(filme);}
     else { 
         for (int i{0}; i < vectorCatalogo.size(); i++) {
             if (filme < vectorCatalogo[i]) {
-                auto it = vectorCatalogo.insert(vectorCatalogo.begin() + i, filme); 
+                auto it = vectorCatalogo.insert(vectorCatalogo.begin() + i, 1, filme); 
                 break;
             }
         }
     }
-
+    std::cout<< (this);
     return *this;
 }
 
-Catalogo Catalogo::operator+= (Filme &filme) {
-    if (((*this)(filme.titulo) != NULL) && ((*this).vectorCatalogo.size() < Catalogo::numMaxFilmes)) {
-        inserirFilme(filme); 
+Catalogo& Catalogo::operator+= (Filme &filme) {
+    if (((*this)(filme.titulo) != NULL) && (this->vectorCatalogo.size() < numMaxFilmes)) {
+        (*this).inserirFilme(filme); 
     }
     return *this;
 }
 
-Catalogo Catalogo::operator+= (std::vector<Filme> &vectorFilmes) {
+Catalogo& Catalogo::operator+= (std::vector<Filme> &vectorFilmes) {
     for (auto filme : vectorFilmes) {
         *this+= filme;
     }
     return *this;
 }
 
-Catalogo Catalogo::operator-= (const std::string &titulo) {
+Catalogo& Catalogo::operator-= (const std::string &titulo) {
     if ((*this)(titulo) != NULL) {
         vectorCatalogo.erase(std::find(vectorCatalogo.begin(), vectorCatalogo.end(), *(*this)(titulo))); 
     }
@@ -49,14 +41,14 @@ Catalogo Catalogo::operator-= (const std::string &titulo) {
 }
 
 Filme* Catalogo::operator() (const std::string titulo) {
-    Filme* filmePtr = NULL;
-    for (auto filme : vectorCatalogo) {
+    Filme *filmePtr = NULL;
+    for (auto filme : (*this).vectorCatalogo) {
         if (filme.titulo == titulo) {filmePtr = &filme;}
     }
     return filmePtr;
 }
 
-Catalogo Catalogo::operator() (std::string titulo, std::string novoNome, bool mudarTitulo = false) {
+Catalogo& Catalogo::operator() (std::string titulo, std::string novoNome, bool mudarTitulo = false) {
     if (mudarTitulo == false) { (*this)(titulo)->produtora = novoNome; }
 
     else {
@@ -73,7 +65,7 @@ Catalogo Catalogo::operator() (std::string titulo, std::string novoNome, bool mu
     return *this;
 }
 
-Catalogo Catalogo::operator() (std::string titulo, double nota) {
+Catalogo& Catalogo::operator() (std::string titulo, double nota) {
     (*this)(titulo)->nota = nota;
     return *this;
 }

@@ -45,15 +45,17 @@ Catalogo insereVetorFilme(Catalogo &catalogo) {
 void buscaFilme(Catalogo &catalogo) {
     std::string titulo;
     std::cout<< "Titulo para busca: ";
+    std::cin.ignore();
     std::getline (std::cin,titulo);
     std::cout<< std::endl;
 
-    std::cout<< *catalogo(titulo);
+    std::cout<< catalogo(titulo);
 }
 
 Catalogo removeFilme(Catalogo &catalogo) {
     std::string titulo;
     std::cout<< "Titulo do filme para remocao: ";
+    std::cin.ignore();
     std::getline (std::cin,titulo);
     std::cout<< std::endl;
 
@@ -63,6 +65,7 @@ Catalogo removeFilme(Catalogo &catalogo) {
 Catalogo editaFilme(Catalogo &catalogo) {
     std::cout<< "Titulo do filme a ser editado: ";
     std::string titulo;
+    std::cin.ignore();
     std::getline (std::cin,titulo);
 
     std::cout<< "Digite: \n1 - para editar titulo do filme \n2 - para editar o nome da produtora \n3 - para editar a nota do filme \n Opcao: ";
@@ -73,6 +76,7 @@ Catalogo editaFilme(Catalogo &catalogo) {
         bool mudarTitulo = true;
         std::string novoNome;
         std::cout<< "Novo titulo: ";
+        std::cin.ignore();
         std::getline(std::cin, novoNome);
         std::cout<< std::endl;
         catalogo(titulo,novoNome,mudarTitulo);
@@ -82,6 +86,7 @@ Catalogo editaFilme(Catalogo &catalogo) {
         bool mudarTitulo = false;
         std::string novoNome;
         std::cout<< "Nova produtora: ";
+        std::cin.ignore();
         std::getline(std::cin, novoNome);
         std::cout<< std::endl;
         catalogo(titulo,novoNome,mudarTitulo);
@@ -103,7 +108,7 @@ Catalogo editaFilme(Catalogo &catalogo) {
 }
 
 void imprimeFilme(Catalogo &catalogo) {
-    std::cout<< "Para imprimir, primeiro busqye pelo filme. \n";
+    std::cout<< "Para imprimir, primeiro busque pelo filme. \n";
     buscaFilme(catalogo);
 }
 
@@ -138,15 +143,15 @@ int main() {
         std::cin>>sel;
         std::cout<<std::endl;
 
-        if (sel == 1) {catalogo = insereFilme(catalogo);}
+        if (sel == 1) {insereFilme(catalogo);}
         
-        else if (sel == 2) {catalogo = insereVetorFilme(catalogo);}
+        else if (sel == 2) {insereVetorFilme(catalogo);}
 
         else if (sel == 3) {buscaFilme(catalogo);}
 
-        else if (sel == 4) {catalogo = removeFilme(catalogo);}
+        else if (sel == 4) {removeFilme(catalogo);}
 
-        else if (sel == 5) {catalogo = editaFilme(catalogo);} 
+        else if (sel == 5) {editaFilme(catalogo);} 
 
         else if (sel == 6) {imprimeFilme(catalogo);}
 
