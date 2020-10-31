@@ -8,19 +8,20 @@
 Catalogo& Catalogo::inserirFilme(Filme &filme) {
     if (vectorCatalogo.size() == 0) {vectorCatalogo.push_back(filme);}
     else { 
-        for (int i{0}; i < vectorCatalogo.size(); i++) {
+        for (size_t i{0}; i < vectorCatalogo.size(); i++) {
             if (filme < vectorCatalogo[i]) {
-                auto it = vectorCatalogo.insert(vectorCatalogo.begin() + i, 1, filme); 
+                /*auto it = */ vectorCatalogo.insert(vectorCatalogo.begin() + i, 1, filme); 
                 break;
             }
         }
+        //se n tiver elemento menos que o filme ele eh o maior entao push_back
+        vectorCatalogo.push_back(filme);
     }
-    std::cout<< (this);
     return *this;
 }
 
 Catalogo& Catalogo::operator+= (Filme &filme) {
-    if (((*this)(filme.titulo) != NULL) && (this->vectorCatalogo.size() < numMaxFilmes)) {
+    if (((*this)(filme.titulo) == NULL) && (this->vectorCatalogo.size() < numMaxFilmes)) {
         (*this).inserirFilme(filme); 
     }
     return *this;
@@ -42,8 +43,14 @@ Catalogo& Catalogo::operator-= (const std::string &titulo) {
 
 Filme* Catalogo::operator() (const std::string titulo) {
     Filme *filmePtr = NULL;
-    for (auto filme : (*this).vectorCatalogo) {
-        if (filme.titulo == titulo) {filmePtr = &filme;}
+    for (auto filme : this -> vectorCatalogo) {
+        //std::cout<<filme;
+        if (filme.titulo == titulo) {
+            filmePtr = &filme;
+            std::cout<< "Resultado no metodo: " << std::endl;
+            std::cout<< filmePtr << std::endl;
+            std::cout<< *filmePtr << std::endl;
+            break;}
     }
     return filmePtr;
 }
@@ -93,5 +100,13 @@ Filme Catalogo::filmeNotaMaisAlta() {
 
 const int Catalogo::getNumMaxFilmes() {
     return numMaxFilmes;
+}
+
+const std::vector<Filme> Catalogo::getVectorCatalogo() {
+    return vectorCatalogo;
+}
+
+const std::vector<Filme> Catalogo::getVectorCatalogo() const {
+    return vectorCatalogo;
 }
 

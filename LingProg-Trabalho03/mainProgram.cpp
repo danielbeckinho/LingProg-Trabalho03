@@ -47,9 +47,15 @@ void buscaFilme(Catalogo &catalogo) {
     std::cout<< "Titulo para busca: ";
     std::cin.ignore();
     std::getline (std::cin,titulo);
+    std::cout<< titulo;
     std::cout<< std::endl;
 
-    std::cout<< catalogo(titulo);
+    Filme *filmePtr = catalogo(titulo);
+
+    if (filmePtr != NULL) {
+        std::cout<< "Resultado na func: " << std::endl;
+        std::cout<< filmePtr << std::endl;
+        std::cout<< *filmePtr << std::endl;}
 }
 
 Catalogo removeFilme(Catalogo &catalogo) {

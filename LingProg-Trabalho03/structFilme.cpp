@@ -18,6 +18,11 @@ std::ostream &operator<< (std::ostream &out, const Filme &filme) {
     return out; 
 } 
 
+/* std::ostream &operator<< (std::ostream &out, const Filme *filmePtr) { 
+    out << "Titulo: " << filmePtr->titulo << " |" << "Produtora: " << filmePtr->produtora << " |" << "Nota: " << std::setprecision(1) << filmePtr->nota << std::endl; 
+    return out; 
+} */
+
 bool Filme::operator < (const Filme &filme2) { return ((*this).titulo < filme2.titulo); }
 
 bool Filme::operator > (const Filme &filme2) { return ((*this).titulo > filme2.titulo); }

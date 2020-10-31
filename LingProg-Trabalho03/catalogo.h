@@ -27,6 +27,9 @@ class Catalogo {
         Filme filmeNotaMaisAlta(); 
 
         const int getNumMaxFilmes();
+
+        const std::vector<Filme> getVectorCatalogo() const;
+        const std::vector<Filme> getVectorCatalogo();
         
     private:
         static const int numMaxFilmes{3};
