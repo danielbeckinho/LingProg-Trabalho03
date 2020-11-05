@@ -10,7 +10,7 @@ Catalogo& Catalogo::inserirFilme(Filme &filme) {
     else { 
         for (size_t i{0}; i < vectorCatalogo.size(); i++) {
             if (filme < vectorCatalogo[i]) {
-                /*auto it = */ vectorCatalogo.insert(vectorCatalogo.begin() + i, 1, filme); 
+                vectorCatalogo.insert(vectorCatalogo.begin() + i, 1, filme); 
                 break;
             }
         }
@@ -28,9 +28,13 @@ Catalogo& Catalogo::operator+= (Filme &filme) {
 }
 
 Catalogo& Catalogo::operator+= (std::vector<Filme> &vectorFilmes) {
-    for (auto filme : vectorFilmes) {
-        *this+= filme;
+    for (unsigned i{0}; i < vectorFilmes.size(); i++) {
+        *this+= vectorFilmes[i];
     }
+    
+    /*for (auto filme : vectorFilmes) {
+        *this+= filme;
+    }*/
     return *this;
 }
 
@@ -42,17 +46,13 @@ Catalogo& Catalogo::operator-= (const std::string &titulo) {
 }
 
 Filme* Catalogo::operator() (const std::string titulo) {
-    Filme *filmePtr = NULL;
-    for (auto filme : this -> vectorCatalogo) {
-        //std::cout<<filme;
-        if (filme.titulo == titulo) {
-            filmePtr = &filme;
-            std::cout<< "Resultado no metodo: " << std::endl;
-            std::cout<< filmePtr << std::endl;
-            std::cout<< *filmePtr << std::endl;
-            break;}
-    }
-    return filmePtr;
+    for (unsigned i = 0; i < (this->vectorCatalogo).size(); i++) {
+    	if ((this->vectorCatalogo[i]).titulo == titulo) {
+            return &(this->vectorCatalogo[i]);
+        }
+	}
+	//se nao encontrar retorna NULL
+	return NULL;
 }
 
 Catalogo& Catalogo::operator() (std::string titulo, std::string novoNome, bool mudarTitulo = false) {
@@ -85,9 +85,20 @@ std::ostream &operator<<(std::ostream &out, const Catalogo &catalogo) {
     return out;
 }
 
-Filme Catalogo::filmeNotaMaisAlta() {
+Filme *Catalogo::filmeNotaMaisAlta() {
     double notaMax = 0;
-    Filme *filmeNotaMaxPtr = NULL; 
+    unsigned indiceNotaMax{0};
+
+    for (unsigned i{0}; i < vectorCatalogo.size(); i++) {
+        if (vectorCatalogo[i].nota > notaMax) {
+            notaMax = vectorCatalogo[i].nota;
+            indiceNotaMax = i;
+        }
+    }
+
+    return &vectorCatalogo[indiceNotaMax];
+
+    /* Filme *filmeNotaMax = NULL; 
 
     for (auto filme : vectorCatalogo) {
         if (filme.nota > notaMax) {
@@ -96,6 +107,7 @@ Filme Catalogo::filmeNotaMaisAlta() {
         }
     }
     return *filmeNotaMaxPtr;
+    */
 }
 
 const int Catalogo::getNumMaxFilmes() {

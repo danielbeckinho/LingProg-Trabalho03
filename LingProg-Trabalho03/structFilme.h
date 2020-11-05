@@ -9,7 +9,6 @@ struct Filme {
 
     friend std::istream &operator>>(std::istream &, Filme &);
     friend std::ostream &operator<<(std::ostream &, const Filme &);
-    //friend std::ostream &operator<<(std::ostream &, const Filme *);
 
     bool operator < (const Filme &);
     bool operator > (const Filme &);

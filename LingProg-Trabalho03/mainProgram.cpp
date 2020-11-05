@@ -52,10 +52,8 @@ void buscaFilme(Catalogo &catalogo) {
 
     Filme *filmePtr = catalogo(titulo);
 
-    if (filmePtr != NULL) {
-        std::cout<< "Resultado na func: " << std::endl;
-        std::cout<< filmePtr << std::endl;
-        std::cout<< *filmePtr << std::endl;}
+    if (filmePtr != NULL) { std::cout<< *filmePtr << std::endl;}
+    
 }
 
 Catalogo removeFilme(Catalogo &catalogo) {
@@ -123,7 +121,7 @@ void imprimeCatalogo(Catalogo &catalogo) {
 }
 
 void buscaFilmeMaiorNota(Catalogo &catalogo) {
-    std::cout<< catalogo.filmeNotaMaisAlta();
+    std::cout<< *(catalogo.filmeNotaMaisAlta());
 }
 
 

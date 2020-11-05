@@ -24,7 +24,7 @@ class Catalogo {
         Catalogo& operator() (std::string, std::string, bool);
         Catalogo& operator() (std::string, double);
     
-        Filme filmeNotaMaisAlta(); 
+        Filme *filmeNotaMaisAlta(); 
 
         const int getNumMaxFilmes();
 
